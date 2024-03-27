@@ -1,13 +1,33 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const seenNumbers = new Set();
+
+  for (let num of array) {
+    const complement = target - num;
+    if (seenNumbers.has(complement)) {
+      return true;
+    }
+    seenNumbers.add(num);
+  }
+
+  return false;
 }
+
 
 /* 
   Write the Big O time complexity of your function here
+  
+  O(n) = n number of arrays that we have
 */
 
 /* 
   Add your pseudocode here
+   as a function thats takes in parameter =  array[40 ,8 , 8, 10] , target 50
+  empty array =  n=[].
+  Iterate through each number in the array = array[40 ,8 , 8, 10] | 40 8 8 10
+  Calculate the number by subtracting the target = 40 8 8 10 - 50
+  If the complement exists in the set, return true. = 40 8 8 10 = 50 | true
+  Otherwise, add the current number to the seenNumbers set = 4 8 8 1 | false
+  loop through to  find a pair, return false.
 */
 
 /*
